@@ -11,7 +11,7 @@ In other words Mix projects created with [mix_lfe](https://github.com/meddle0x53
 Install it with:
 
 ```
-mix archive.install https://github.com/meddle0x53/mix_lfe_new/releases/download/v0.1.0/mix_lfe_new-0.2.0.ez
+mix archive.install https://github.com/meddle0x53/mix_lfe_new/releases/download/v0.2.0/mix_lfe_new-0.2.0.ez
 ```
 
 ## Usage
