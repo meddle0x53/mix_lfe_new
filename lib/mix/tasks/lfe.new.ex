@@ -15,20 +15,20 @@ defmodule Mix.Tasks.Lfe.New do
 
   It expects the path of the project as argument.
 
-      mix new PATH [--setup]
+      mix lfe.new PATH [--setup]
 
   A project at the given PATH will be created.
   The application name and module name will be retrieved from the path.
 
   ## Examples
 
-      mix new my_lfe_project
+      mix lfe.new my_lfe_project
 
   The LFE projects depend on the LFE compiler, which has to be downloaded and installed itself.
   This can be done either manually, by running `mix lfe.deps.setup` in the newly generatd project,
   or automatically by running this task the following way:
 
-      mix new my_lfe_project --setup
+      mix lfe.new my_lfe_project --setup
 
   """
 
@@ -103,14 +103,7 @@ defmodule Mix.Tasks.Lfe.New do
     create_file("test/#{app}-tests.lfe", test_template(assigns))
 
     if opts[:setup] do
-      Mix.Shell.cmd("mix deps.get", fn output -> IO.write(output) end)
-      Mix.Shell.cmd("mix local.rebar --force", fn output -> IO.write(output) end)
-
-      local_rebar = Mix.Rebar.local_rebar_path(:rebar3)
-
-      File.cd!(Path.join("deps", "lfe"), fn ->
-        Mix.Shell.cmd("#{local_rebar} compile", fn output -> IO.write(output) end)
-      end)
+      Mix.Shell.cmd("mix lfe.setup", fn output -> IO.write(output) end)
     end
 
     """
@@ -210,7 +203,7 @@ defmodule Mix.Tasks.Lfe.New do
     # Run "mix help deps" to learn about dependencies.
     defp deps do
       [
-        {:mix_lfe, "0.2.0-rc2", only: [:dev, :test]}
+        {:mix_lfe, "0.2.0-rc3", app: false, only: [:dev, :test]}
       ]
     end
   end

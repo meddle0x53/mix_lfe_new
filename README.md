@@ -1,21 +1,38 @@
-# MixLfeNew
+# mix lfe.new
 
-**TODO: Add description**
+A mix task for creating and setting up new LFE projects.
+
+It is used to create Mix projects, capable of compiling LFE source files and
+running tests written for them.
+In other words Mix projects created with [mix_lfe](https://github.com/meddle0x53/mix_lfe).
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `mix_lfe_new` to your list of dependencies in `mix.exs`:
+Install it with:
 
-```elixir
-def deps do
-  [
-    {:mix_lfe_new, "~> 0.1.0"}
-  ]
-end
+```
+mix archive.install https://github.com/meddle0x53/mix_lfe_new/releases/download/v0.1.0/mix_lfe_new-0.2.0.ez
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/mix_lfe_new](https://hexdocs.pm/mix_lfe_new).
+## Usage
 
+A LFE project can be created with:
+
+```
+mix lfe.new <project_name>
+```
+
+or with:
+
+```
+mix lfe.new <project_name> --setup
+```
+
+if it should be set up.
+
+Setting up a LFE project means downloading LFE and compiling it.
+It can be done on later stage in the root of the LFE project with:
+
+```
+mix lfe.setup
+```
